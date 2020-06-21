@@ -1,25 +1,20 @@
 import { Request, Response } from 'express';
 import connection from '../database/connection';
-import generateUniqueId from '../utils/generateUniqueId';
 
 const snackController = {
-    async create(req: Request, res: Response) {
-        const idLanchonete = generateUniqueId;
+    async index(req: Request, res: Response) {
+        const snackies = await connection('lanche')
+            .select('*');
         
-        const imagem = req.file.filename;
-
-        const { nome, email, senha } = req.body;
-        const { idEndereco } = req.params;
-
-        await connection('lanchonete').insert({
-            idLanchonete,
-            nome, 
-            email,
-            senha,
-            imagem,
-            idEndereco
-        })
+        const serializedSnackies = snackies.map(snack => {
+            return {
+                id: snack.idLanche,
+                nome: snack.nome,
+                image_url: `http://192.168.0.1:3333/uploads/${snack.imagem}`
+            };
+        });
         
+        return res.json(serializedSnackies);
     },
 };
 
