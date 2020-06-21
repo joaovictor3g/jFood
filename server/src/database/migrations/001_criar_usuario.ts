@@ -6,6 +6,7 @@ export async function up(knek: Knex) {
         table.string('nome').notNullable();
         table.string('email').notNullable();
         table.string('telefone').notNullable();
+        table.string('senha').notNullable();
         table.integer('idEndereco').notNullable();
         table.foreign('idEndereco').references('idEndereco').inTable('endereco');
     }); 
