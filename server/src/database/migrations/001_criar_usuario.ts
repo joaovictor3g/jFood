@@ -2,7 +2,7 @@ import Knex from 'knex';
 
 export async function up(knek: Knex) {
     return knek.schema.createTable('usuario', table => {
-        table.integer('idUsuario').primary().notNullable();
+        table.string('idUsuario').primary().notNullable();
         table.string('nome').notNullable();
         table.string('email').notNullable();
         table.string('telefone').notNullable();

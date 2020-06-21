@@ -2,7 +2,7 @@ import Knex from 'knex';
 
 export async function up(knex: Knex) {
     return knex.schema.createTable('pedido', table => {
-        table.integer('idPedido').primary().notNullable();
+        table.increments('idPedido').primary().notNullable();
         table.time('hora').notNullable();
         table.date('data');
         table.integer('idUsuario');

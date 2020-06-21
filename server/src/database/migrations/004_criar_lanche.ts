@@ -2,7 +2,7 @@ import Knex from 'knex';
 
 export async function up(knex: Knex) {
     return knex.schema.createTable('lanche', table => {
-        table.integer('idLanche').primary().notNullable();
+        table.increments('idLanche').primary().notNullable();
         table.string('nome').notNullable();
         table.string('imagem').notNullable();
 

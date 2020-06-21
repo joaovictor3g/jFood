@@ -1,9 +1,9 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+
+import addressController from './controllers/addressController';
 
 const routes = Router();
 
-routes.get('/', (req: Request, res: Response) => {
-    return res.send('Hello World');
-})
+routes.post('/create-user', addressController.create);
 
 export default routes;
