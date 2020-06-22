@@ -10,7 +10,7 @@ const snackController = {
             return {
                 id: snack.idLanche,
                 nome: snack.nome,
-                image_url: `http://192.168.0.1:3333/uploads/${snack.imagem}`
+                image_url: `http://192.168.0.106:3333/uploads/${snack.imagem}`
             };
         });
         

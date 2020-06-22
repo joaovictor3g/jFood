@@ -30,7 +30,19 @@ const snackBarController = {
         
         return res.json(allSnackBars);
 
-    }
+    },
+    
+    // rota de detalhe da lanchonete, que vai trazer as informações do 
+    async detail(req: Request, res: Response) {
+        const { id } = req.params;
+
+        const idLanche = await connection('lanchonete')
+            .join('lanchonete_lanche', 'lanchonete_lanche.idLanchonete', '=', 'lanchonete.idLanchonete')
+            .where('lanchonete.idLanchonete', String(id))
+            .select('lanchonete_lanche.idLanche');
+            
+        return res.json(idLanche);
+    },
 };
 
 export default snackBarController;
