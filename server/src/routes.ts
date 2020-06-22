@@ -22,6 +22,7 @@ routes.post('/log-in', userController.loginWithPassAndId);
 routes.post('/create-snackbar/:idEndereco', upload.single('imagem'), snackBarController.create);
 routes.get('/see-snackbars/', snackBarController.show);
 routes.get('/see-detail/:id', snackBarController.detail);
+routes.post('/search', snackBarController.returnSnackBarsWithInitials);
 
 routes.get('/uploads', snackController.index);
 

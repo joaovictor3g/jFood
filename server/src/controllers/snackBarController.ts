@@ -37,11 +37,21 @@ const snackBarController = {
         const { id } = req.params;
 
         const idLanche = await connection('lanchonete')
-            .join('lanchonete_lanche', 'lanchonete_lanche.idLanchonete', '=', 'lanchonete.idLanchonete')
+            .join('lanchonete_lanche', 'lanchonete.idLanchonete', 'lanchonete_lanche.idLanchonete')
             .where('lanchonete.idLanchonete', String(id))
             .select('lanchonete_lanche.idLanche');
             
+
         return res.json(idLanche);
+    },
+
+    async returnSnackBarsWithInitials(req: Request, res: Response) {
+        const { letters } = req.body;
+
+        const initialSnackBars = await connection('lanchonete')
+            .where('lanchonete.nome', 'like', `%${letters}%`);
+
+        return res.json(initialSnackBars);
     },
 };
 
