@@ -3,13 +3,9 @@ import multer from 'multer';
 import multerConfig from './config/multer';
 
 import addressController from './controllers/addressController';
-
 import userController from './controllers/userController';
-
 import snackBarController from './controllers/snackBarController';
-
 import snackController from './controllers/snackController';
-
 const upload = multer(multerConfig);
 
 const routes = Router();
